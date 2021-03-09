@@ -6,26 +6,34 @@ import 'package:transformer_page_view/transformer_page_view.dart';
 void main() {
   testWidgets('TransformerPageView basic usage', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(
+      MaterialApp(
         home: new TransformerPageView(
-            itemBuilder: (context, index) {
-              return Text("0");
-            },
-            itemCount: 10)));
+          itemBuilder: (context, index) {
+            return Text("0");
+          },
+          itemCount: 10,
+        ),
+      ),
+    );
 
     expect(find.text("0", skipOffstage: false), findsOneWidget);
   });
   testWidgets('Zero item count ', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(
+      MaterialApp(
         home: new TransformerPageView(
-            transformer: new PageTransformerBuilder(
-                builder: (Widget child, TransformInfo info) {
-              return new Container(
-                child: new Text("0"),
-              );
-            }),
-            itemCount: 0)));
+          transformer: new PageTransformerBuilder(
+              builder: (Widget child, TransformInfo info) {
+            return new Container(
+              child: new Text("0"),
+            );
+          }),
+          itemCount: 0,
+        ),
+      ),
+    );
 
     expect(find.text("0", skipOffstage: false), findsNothing);
   });
