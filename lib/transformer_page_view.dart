@@ -106,7 +106,7 @@ class TransformerPageController extends PageController {
     bool keepPage = true,
     double viewportFraction = 1.0,
     this.loop: false,
-    required this.itemCount,
+    this.itemCount = 0,
     this.reverse: false,
   }) : super(
             initialPage: TransformerPageController._getRealIndexFromRenderIndex(
